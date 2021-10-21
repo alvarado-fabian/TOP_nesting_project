@@ -54,5 +54,6 @@ while(is_available == 0):
             is_available = 0
             print(name + " available - notify " + url)
             publish(name + " " + url )
+            time.sleep(random.randint(20, 60))
     attempts += 1
 
