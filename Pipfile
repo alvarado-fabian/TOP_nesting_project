@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+boto3 = "==1.16.19"
+requests = "==2.22.0"
+DateTime = "==4.3"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
