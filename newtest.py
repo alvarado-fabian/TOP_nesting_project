@@ -1,10 +1,16 @@
-
 import requests
 from datetime import datetime
 import time
 import random
 import boto3
 import os
+
+def publish(ps5_name):
+    arn = "arn:aws:sns:us-east-1:891431751772:PS5-IN-STOCK"
+    sns_client = boto3.client( 'sns', region_name="us-east-1" )
+    response = sns_client.publish(
+        TopicArn=arn, Message=" It's in Stock! Go Grab it! " + ps5_name )
+
 
 # global vars
 is_available = 0
@@ -14,27 +20,23 @@ attempts = 0
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36', 'authority': 'www.bestbuy.com'
     }
-
-def publish(ps5_name):
-    arn = "arn:aws:sns:us-east-1:891431751772:PS5-IN-STOCK"
-    sns_client = boto3.client( 'sns', region_name="us-east-1" )
-    response = sns_client.publish(
-        TopicArn=arn, Message=" It's in Stock! Go Grab it! " + ps5_name )
-
 items = [
-    {
-    'item_url': 'https://www.bestbuy.com/site/sony-playstation-5-digital-edition-console/6430161.p?skuId=6430161',
-    'item_name': "PlayStation 5 Digital Edition Console", 'search_string': 'Sold Out</button>'
-    }, 
-    {
-    'item_url': 'https://www.bestbuy.com/site/sony-playstation-5-console/6426149.p?skuId=6426149',
-    'item_name': "PlayStation 5 Console",  'search_string': 'Sold Out</button>'
-    }, 
-    {
-    'item_url': 'https://www.bestbuy.com/site/madden-nfl-22-standard-edition-playstation-5/6465432.p?skuId=6465432',
-    'item_name': "Madden NFL 22 Standard Edition",  'search_string': 'Sold Out</button>'
-    }
-]
+        {
+        'item_url': 'https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/playstation-5-digital-edition/229026.html',
+        'item_name': "PlayStation 5 Digital Edition Console", 
+        'search_string': 'Unavailable'
+        }, 
+        {
+        'item_url': 'https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/playstation-5/229025.html',
+        'item_name': "PlayStation 5 Console",  
+        'search_string': 'Unavailable'
+        }, 
+        {
+        'item_url': 'https://www.gamestop.com/consoles-hardware/playstation-5/gaming-accessories/controllers/products/sony-dualsense-wireless-controller-midnight-black/297428.html',
+        'item_name': "Sony DualSense Wireless Controller Midnight Black",  
+        'search_string': 'Unavailable'
+        }
+    ]
 for item in items:
     url = item['item_url']
     name = item['item_name']
