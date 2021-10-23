@@ -1,0 +1,64 @@
+service: ps5-stock-checker
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'sns:Publish'
+        - dynamodb:DeleteItem
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:UpdateItem
+      Resource:
+      - !Ref PS5StockTopic
+      - !GetAtt [stateManager, Arn]
+
+functions:
+  stock_check:
+    handler: src/stock.stock_check
+    memorySize: 1600
+    timeout: 30
+    environment:
+      ARN: !Ref PS5StockTopic
+      STATE_TBL_NAME: !Ref stateManager
+    events:
+      - schedule: rate(10 minutes)
+
+resources:
+  Resources:
+    PS5StockTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        DisplayName: PS5 Stock Topic
+        TopicName: PS5_Stock_Topic
+    PS5StockTopicSubscription:
+      Type: AWS::SNS::Subscription
+      Properties:
+        TopicArn: !Ref PS5StockTopic
+        Protocol: email
+        Endpoint: fabian.alvarado@rackspace.com
+    stateManager:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:service}-${opt:stage, 'dev'}-state
+        AttributeDefinitions:
+          - AttributeName: ConsoleName
+            AttributeType: S
+        KeySchema:
+          - AttributeName: ConsoleName
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+  Outputs:
+    StateManagerArn:
+      Value: !GetAtt [stateManager, Arn]
+
+plugins:
+  - serverless-python-requirements
