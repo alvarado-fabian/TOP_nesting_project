@@ -5,6 +5,7 @@ This project will include the following AWS services:
 *  DynamoDB
 *  SNS
 *  EventBridge (Cloudwatch Events)
+*  Amazon S3
 
 We will also make use of Serverless Framework to deploy the lambda function along with all the necessary its aws resouces. Below is a simpe diagram of the infrastructure. 
 
