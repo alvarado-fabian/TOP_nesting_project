@@ -35,7 +35,7 @@ def stock_check(event, context):
     ]
     for item in items:
         now = datetime.now()
-        current_time = now.strftime("%H:%M:%S")
+        current_time = now.strftime("%Y-%m-%d %H:%M:%S")
         url = item['item_url']
         name = item['item_name']
         search_string = item['search_string']

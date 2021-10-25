@@ -27,8 +27,9 @@ functions:
     environment:
       ARN: !Ref PS5StockTopic
       STATE_TBL_NAME: !Ref stateManager
+      REGION: "us-east-1"
     events:
-      - schedule: rate(10 minutes)
+      - schedule: rate(50 minutes)
 
 resources:
   Resources:
