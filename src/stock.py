@@ -23,10 +23,15 @@ def stock_check(event, context):
         'search_string': 'Unavailable'
         }, 
         {
-        'item_url': 'https://www.gamestop.com/consoles-hardware/playstation-5/gaming-accessories/controllers/products/sony-dualsense-wireless-controller-midnight-black/297428.html',
-        'item_name': "Sony DualSense Wireless Controller Midnight Black",  
+        'item_url': 'https://www.gamestop.com/consoles-hardware/playstation-5/consoles/products/playstation-5/229025.html',
+        'item_name': "PlayStation 5 Console",  
         'search_string': 'Unavailable'
-        }
+        }, 
+        {
+        'item_url': 'http://gamestop-static-website-test-12345.com.s3-website-us-east-1.amazonaws.com',
+        'item_name': "Test Page",  
+        'search_string': 'Unavailable'
+        }    
     ]
     for item in items:
         now = datetime.now()
