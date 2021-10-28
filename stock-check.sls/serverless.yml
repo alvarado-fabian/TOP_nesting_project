@@ -28,6 +28,7 @@ functions:
       ARN: !Ref PS5StockTopic
       STATE_TBL_NAME: !Ref stateManager
       REGION: "us-east-1"
+      TEST_PAGE_URL: !GetAtt "S3Bucket.DomainName"
     events:
       - schedule: rate(45 minutes)
 

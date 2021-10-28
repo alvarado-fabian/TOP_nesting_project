@@ -28,7 +28,7 @@ def stock_check(event, context):
         'search_string': 'Unavailable'
         }, 
         {
-        'item_url': 'http://gamestop-static-website-test-12345.com.s3-website-us-east-1.amazonaws.com',
+        'item_url': 'http://'+ os.getenv('TEST_PAGE_URL'),
         'item_name': "Test Page",  
         'search_string': 'Unavailable'
         }    
