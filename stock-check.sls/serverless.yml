@@ -57,9 +57,29 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
+    S3Bucket:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        WebsiteConfiguration:
+          IndexDocument: "index.html"
+        AccessControl: PublicRead
+    ReadPolicy:
+      Type: "AWS::S3::BucketPolicy"
+      Properties:
+        Bucket: !Ref S3Bucket
+        PolicyDocument:
+          Statement:
+            - Action: "s3:GetObject"
+              Effect: Allow
+              Resource: !Sub "arn:aws:s3:::${S3Bucket}/*"
+              Principal: "*"
+              Sid: "PublicReadGetObject"
   Outputs:
     StateManagerArn:
       Value: !GetAtt [stateManager, Arn]
+    Bucket:
+      Description: "S3 Bucket Name"
+      Value: !Ref S3Bucket
 
 plugins:
   - serverless-python-requirements
