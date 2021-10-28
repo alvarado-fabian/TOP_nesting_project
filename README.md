@@ -1,22 +1,24 @@
-# Gamestop Product Availibilty
+# Gamestop Product Availability
+
+Have you ever missed out on a product online and wished you would've been notified as soon as it became available for purchase? Well, wait no more this simple project will scrape a website of your choice and notifies you once its available.  
 
 This project will include the following AWS services:
-*  AWS Lambda
-*  DynamoDB
-*  SNS
-*  EventBridge (Cloudwatch Events)
-*  Amazon S3
+* AWS Lambda
+* DynamoDB
+* SNS
+* EventBridge (Cloud watch Events)
+* Amazon S3
 
-We will also make use of Serverless Framework to deploy the lambda function along with all the necessary its aws resouces. Below is a simpe diagram of the infrastructure. 
+We will also make use of Serverless Framework to deploy the lambda function along with all the necessary aws resources. Below is a simple diagram of the infrastructure. 
 
 ![Serverless-GameStop-In-Stock-Notification](https://user-images.githubusercontent.com/47754258/138712064-0cd1924e-8d44-4408-ad89-d424065a7f44.png)
 
 
-Make sure you have serverless installed locally on your machine. 
+Make sure you have server less installed locally on your machine. 
 
 https://www.serverless.com/framework/docs/getting-started/
 
-$ serverless --version
+$ server less --version
 Framework Core: 2.55.0 (standalone)
 Plugin: 5.4.3
 SDK: 4.2.6
@@ -24,11 +26,15 @@ Components: 3.15.1
 
 To make use of the 'requests' library being used in our lambda function we will need to run the following before we can deploy. 
 
-* serverless install plugin serverless-python-requirements
+* server less install plugin serverless-python-requirements
 
-Make sure you updated the email address amd phone number in the serverless.yml file. 
+Make sure you updated the email address amd phone number in the server less.yml file. 
 
 Once you have your keys exported as environment variables you can now run 
+
+* sls deploy
+
+You can see the cloud formation stack being launched and all the resources being deployed. 
 
 * sls deploy
 
