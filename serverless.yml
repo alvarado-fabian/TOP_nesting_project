@@ -29,7 +29,7 @@ functions:
       STATE_TBL_NAME: !Ref stateManager
       REGION: "us-east-1"
     events:
-      - schedule: rate(50 minutes)
+      - schedule: rate(45 minutes)
 
 resources:
   Resources:

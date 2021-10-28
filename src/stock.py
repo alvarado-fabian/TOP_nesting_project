@@ -9,7 +9,7 @@ def publish(ps5_name):
     arn = os.getenv('ARN')
     sns_client = boto3.client( 'sns', region_name=os.getenv('REGION') )
     response = sns_client.publish(
-        TopicArn=arn, Message=" It's in Stock! Go Grab it! " + ps5_name )
+        TopicArn=arn, Message=" The item is finally in stock! Go grab it as ASAP! " + ps5_name )
 
 
 def stock_check(event, context):
@@ -54,7 +54,7 @@ def stock_check(event, context):
                 }
             )
         else:
-            print(name + " available - notify " + url)
+            print(name + " is available - will notify! " + url)
             publish(name + " " + url )
             dynamodb = boto3.resource('dynamodb', region_name=os.getenv('REGION'))
             table = dynamodb.Table(os.getenv('STATE_TBL_NAME'))
