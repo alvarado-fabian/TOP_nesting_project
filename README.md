@@ -36,9 +36,7 @@ Once you have your keys exported as environment variables you can now run
 
 You can see the cloud formation stack being launched and all the resources being deployed. 
 
-* sls deploy
+# Test Page
 
-You can see the cloudformation stack being launched and all the resources being deployed. 
-
-
+There is an html page that was added to let you control the html content and test your code is working as expected.  This static page is being hosted on s3 bucket.  
 
