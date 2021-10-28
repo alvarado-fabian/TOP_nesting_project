@@ -1,6 +1,6 @@
 # Gamestop Product Availability
 
-Have you ever missed out on a product online and wished you would've been notified as soon as it became available for purchase? Well, wait no more this simple project will scrape a website of your choice and notifies you once its available.  
+Have you ever missed out on a product online and wished you would've been notified as soon as it became available for purchase? Well, wait no more, this simple project will scrape a website of your choice and notify you once its available. 
 
 This project will include the following AWS services:
 * AWS Lambda
