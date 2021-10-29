@@ -9,7 +9,7 @@ def publish(ps5_name):
     arn = os.getenv('ARN')
     sns_client = boto3.client( 'sns', region_name=os.getenv('REGION') )
     response = sns_client.publish(
-        TopicArn=arn, Message=" The item is finally in stock! Go grab it as ASAP! " + ps5_name )
+        TopicArn=arn, Message=" The item is finally in stock! Go grab it ASAP! " + ps5_name )
 
 
 def stock_check(event, context):
