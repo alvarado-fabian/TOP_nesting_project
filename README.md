@@ -18,7 +18,7 @@ Make sure you have server less installed locally on your machine.
 
 https://www.serverless.com/framework/docs/getting-started/
 
-$ server less --version
+$ serverless --version
 Framework Core: 2.55.0 (standalone)
 Plugin: 5.4.3
 SDK: 4.2.6
@@ -26,7 +26,7 @@ Components: 3.15.1
 
 To make use of the 'requests' library being used in our lambda function we will need to run the following before we can deploy. 
 
-* server less install plugin serverless-python-requirements
+* serverless install plugin serverless-python-requirements
 
 Make sure you updated the email address amd phone number in the server less.yml file. 
 
