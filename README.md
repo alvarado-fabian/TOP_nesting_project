@@ -38,7 +38,7 @@ You can see the cloud formation stack being launched and all the resources being
 
 # Test Page
 
-There is an html page that was added to let you control the html content and test your code is working as expected.  This static page is being hosted on s3 bucket.  
+There is an html page that was added to let you control the html content and test your code is working as expected.  This static page is being hosted on s3 bucket.  Once serverless runway module is deployed you will have to upload that 'index.html' to the s3 bucket. 
 
 # Runway
 
